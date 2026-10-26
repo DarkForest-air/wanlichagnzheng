@@ -274,7 +274,10 @@
 
 ### 1. 单文件离线版（推荐给国内朋友）
 
-直接发送或下载：[changzheng-offline.html](changzheng-offline.html)
+直接发送或下载：
+
+- [GitHub Release 附件下载](https://github.com/yyy2755/wanlichagnzheng/releases/download/v1.0.1/changzheng-offline.html)
+- [仓库内文件](changzheng-offline.html)
 
 - 约 **805 KB**，CSS 与全部 JavaScript 已内联；
 - 不需要服务器、不需要网络请求，双击即可在浏览器中试玩；
