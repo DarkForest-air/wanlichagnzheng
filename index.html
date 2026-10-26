@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#071b14" />
+  <title>长征 · 万里征途 — 互动长征地图</title>
+  <meta name="description" content="在立体手绘地图上重走长征路：从于都出发，血战湘江、遵义会议、四渡赤水、飞夺泸定桥、翻雪山过草地，直到三大主力胜利会师。" />
+  <link rel="canonical" href="https://yyy2755.github.io/wanlichagnzheng/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:site_name" content="长征 · 万里征途" />
+  <meta property="og:title" content="长征 · 万里征途 — 一座可以走进去的长征互动地图" />
+  <meta property="og:description" content="从于都到会宁，17 个历史坐标、4 卷历史长图、81 种四渡赤水路线。可以读，可以走，可以问，也可以带进课堂和展馆。" />
+  <meta property="og:url" content="https://yyy2755.github.io/wanlichagnzheng/" />
+  <meta property="og:image" content="https://yyy2755.github.io/wanlichagnzheng/docs/screenshots/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="长征 · 万里征途：手绘立体长征地图" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="长征 · 万里征途 — 一座可以走进去的长征互动地图" />
+  <meta name="twitter:description" content="17 个历史坐标、四渡赤水推演、真实地理与史料、教师 / 展馆讲解模式。" />
+  <meta name="twitter:image" content="https://yyy2755.github.io/wanlichagnzheng/docs/screenshots/og-cover.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d2a1f'/%3E%3Cpath d='m32 9 5.6 11.4 12.6 1.8-9.1 8.9 2.1 12.5L32 37.7l-11.2 5.9 2.1-12.5-9.1-8.9 12.6-1.8L32 9Z' fill='%23d64a37' stroke='%23f3d690' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <defs>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4l-5.8 3 1.1-6.4L2.6 9.4l6.5-.9L12 2.6Z"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 4.8 19.2 12 8 19.2V4.8Z"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 4.5v15M16 4.5v15"/></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9.5h4L13 5v14l-5-4.5H4v-5Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></symbol>
+      <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5h4L13 5v14l-5-4.5H4v-5Z"/><path d="m16.5 9.5 5 5M21.5 9.5l-5 5"/></symbol>
+      <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.6 2.6 0 1 1 4.2 2.1c-1 .7-1.7 1.2-1.7 2.6M12 17.2v.1"/></symbol>
+      <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 9a8.5 8.5 0 1 1 .7 7.2"/><path d="M4 3.5v5.7h5.7"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.6 8.4-2.1 5.1-5.1 2.1 2.1-5.1 5.1-2.1Z"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H13a3 3 0 0 0 3-3V9.5"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-6.2 6.5-11A6.5 6.5 0 0 0 5.5 10c0 4.8 6.5 11 6.5 11Z"/><circle cx="12" cy="10" r="2.2"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7.5 3v5M16.5 3v5M3.5 10h17"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m14.5 5-7 7 7 7"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="m9.5 5 7 7-7 7"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v5.2a5 5 0 0 1-10 0V4Z"/><path d="M7 5.5H3.5v2.2A3.3 3.3 0 0 0 7 11M17 5.5h3.5v2.2A3.3 3.3 0 0 1 17 11M12 14.2V18M8 21h8M9 18h6"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5h6a3 3 0 0 1 3 3V21a3 3 0 0 0-3-3H4V4.5ZM20 4.5h-4a3 3 0 0 0-3 3V21a3 3 0 0 1 3-3h4V4.5Z"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12.5 9 5 9-5M3 17l9 5 9-5"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12s3.7-6 9.5-6 9.5 6 9.5 6-3.7 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.4"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 5.5 6-2 6 2 6-2v15l-6 2-6-2-6 2v-15Z"/><path d="M9 3.5v15M15 5.5v15"/></symbol>
+      <symbol id="i-footprints" viewBox="0 0 24 24"><path d="M8.5 4c2 0 3 2 3 4.5S10.5 13 9 13s-2.6-1.8-2.6-4S6.5 4 8.5 4ZM7 15.5c1.5 0 2.3 1 2.3 2.3S8.5 20 7.2 20s-2-.9-2-2.3.5-2.2 1.8-2.2ZM17 8c2 0 3 2 3 4.5S18.8 17 17.3 17s-2.6-1.8-2.6-4S15 8 17 8Z" transform="translate(-1.5 0)"/></symbol>
+      <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.1"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/><path d="M12 1.5v5M12 17.5v5M1.5 12h5M17.5 12h5"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.5c.7 5.4 3.1 7.8 8.5 8.5-5.4.7-7.8 3.1-8.5 8.5-.7-5.4-3.1-7.8-8.5-8.5C8.9 10.3 11.3 7.9 12 2.5Z"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.7 3 7.8 7.5 9.5 4.5-1.7 7.5-4.8 7.5-9.5V6L12 3Z"/><path d="m8.5 11.5 2.3 2.3 4.7-4.7"/></symbol>
+      <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m2 20 7.5-14L15 16l2.5-4L22 20H2Z"/><path d="m6 13 3.5-2.5L12 14"/></symbol>
+      <symbol id="i-waves" viewBox="0 0 24 24"><path d="M2.5 7.5c2.5-2 5-2 7.5 0s5 2 7.5 0 3.8-1.5 4-1.5M2.5 12.5c2.5-2 5-2 7.5 0s5 2 7.5 0 3.8-1.5 4-1.5M2.5 17.5c2.5-2 5-2 7.5 0s5 2 7.5 0 3.8-1.5 4-1.5"/></symbol>
+      <symbol id="i-boat" viewBox="0 0 24 24"><path d="M3 15.5h18l-3.2 4H6.2L3 15.5Z"/><path d="M12 15V4M12 4l7 3-7 3"/><path d="M3 20.5c2-1 4-1 6 0s4 1 6 0 4-1 6 0"/></symbol>
+      <symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 17c2-6 6-8 10-8s8 2 10 8M2 17h20M6 15v4M12 12.5V19M18 15v4"/><path d="M4 9v4M20 9v4"/></symbol>
+      <symbol id="i-snow" viewBox="0 0 24 24"><path d="m2 20 7.5-14L15 16l2.5-4L22 20H2Z"/><path d="m6 13 3.5-2.5L12 14M15 16l1.5-2 2 2"/></symbol>
+      <symbol id="i-grass" viewBox="0 0 24 24"><path d="M3 20c4-1 6-4 7-9 1 5 3 8 7 9M10 20c1-4 2-7 4-10M17 20c-.5-3-1-5-2.5-7M5.5 20C5 16 4 13 2 11"/></symbol>
+      <symbol id="i-hands" viewBox="0 0 24 24"><path d="M2.5 12.5 7 8l3.2 3.2L12 9l1.8 2.2L17 8l4.5 4.5-6 7.5h-7l-6-7.5Z"/><path d="M7 8V4.5M17 8V4.5"/></symbol>
+      <symbol id="i-pass" viewBox="0 0 24 24"><path d="M3 21V8l4-3 4 3v13M13 21V5l4-2 4 2v16M3 21h18M7 11h0M17 9h0"/></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V3M6 4h11l-2 4 2 4H6"/></symbol>
+      <symbol id="i-narrate" viewBox="0 0 24 24"><path d="M3 5.5h10.5v9.8H8.2L3 19V5.5Z"/><path d="M16.6 9.3a3.8 3.8 0 0 1 0 5M19.2 6.8a7.4 7.4 0 0 1 0 10"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M4 18.5v2h16v-2"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.9 7.6-3.8M8.2 13.1l7.6 3.8"/></symbol>
+      <symbol id="i-scroll" viewBox="0 0 24 24"><path d="M6 4h12a2 2 0 0 1 2 2v1H8V6a2 2 0 0 0-4 0v12h14a2 2 0 0 0 2-2v-1H6V4Z"/><path d="M8 10h12M8 14h8"/></symbol>
+      <symbol id="i-present" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 21h8M7 8h10M7 11h6"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="app" id="app" data-theme="map">
+    <canvas id="mapCanvas" aria-label="中央红军长征路线立体手绘地图，可拖拽、缩放和点击事件点"></canvas>
+    <div class="map-grain" aria-hidden="true"></div>
+    <div class="map-vignette" aria-hidden="true"></div>
+    <div class="map-sunlight" aria-hidden="true"></div>
+    <div class="cloud c1" aria-hidden="true"></div>
+    <div class="cloud c2" aria-hidden="true"></div>
+    <div class="cloud c3" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-emblem" aria-hidden="true">
+          <span class="emblem-ring"></span>
+          <svg><use href="#i-star"/></svg>
+        </div>
+        <div class="brand-copy">
+          <div class="brand-kicker">THE LONG MARCH <i>·</i> 1934—1936</div>
+          <h1>长征 <span>·</span> 万里征途</h1>
+        </div>
+      </div>
+
+      <div class="top-stats" aria-label="长征数据">
+        <div class="top-stat"><span>行军里程</span><strong>25,000<em>里</em></strong></div>
+        <div class="top-stat"><span>历时</span><strong>742<em>天</em></strong></div>
+        <div class="top-stat"><span>途经</span><strong>14<em>省</em></strong></div>
+        <div class="top-stat"><span>历史坐标</span><strong>17<em>站</em></strong></div>
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-btn mobile-panel-btn" id="btnTimeline" aria-label="打开征途时间轴" title="征途时间轴">
+          <svg><use href="#i-book"/></svg>
+        </button>
+        <button class="icon-btn narration-trigger" id="btnNarration" aria-label="开启语音讲解" aria-pressed="false" title="语音讲解">
+          <svg><use href="#i-narrate"/></svg>
+          <i class="narration-dot"></i>
+        </button>
+        <button class="icon-btn" id="btnSound" aria-label="开启音效" aria-pressed="false" title="音效">
+          <svg><use href="#i-mute"/></svg>
+        </button>
+        <button class="icon-btn" id="btnLecture" data-open-lecture aria-label="教师 / 展馆讲解模式" title="教师 / 展馆讲解模式">
+          <svg><use href="#i-present"/></svg>
+        </button>
+        <button class="icon-btn" id="btnGeo" data-open-geo aria-label="真实地理与史料图层" title="真实地理与史料图层">
+          <svg><use href="#i-map"/></svg>
+        </button>
+        <button class="icon-btn" id="btnMemoryTop" aria-label="红色记忆馆" title="红色记忆馆">
+          <svg><use href="#i-book"/></svg>
+        </button>
+        <button class="icon-btn" id="btnHelp" aria-label="玩法说明" title="玩法说明">
+          <svg><use href="#i-help"/></svg>
+        </button>
+        <button class="icon-btn desktop-only" id="btnFullscreen" aria-label="全屏" title="全屏">
+          <svg><use href="#i-expand"/></svg>
+        </button>
+        <button class="quiz-cta" id="btnQuiz">
+          <span class="quiz-cta-star"><svg><use href="#i-star"/></svg></span>
+          <span class="quiz-cta-copy"><em>KNOWLEDGE CHECK</em><b>答题挑战</b></span>
+          <span class="quiz-cta-score" id="quizBest">0<small>/8</small></span>
+        </button>
+        <button class="icon-btn mobile-panel-btn" id="btnDossier" aria-label="打开事件档案" title="事件档案">
+          <svg><use href="#i-flag"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="map-plaque" aria-hidden="true">
+      <span class="plaque-kicker">CENTRAL RED ARMY · ROUTE MAP</span>
+      <div class="plaque-title">中央红军长征路线图</div>
+      <div class="plaque-meta"><span>1934.10</span><i></i><span>1936.10</span><i></i><span>二万五千里</span></div>
+    </div>
+
+    <div class="compass" aria-hidden="true">
+      <div class="compass-ring"></div>
+      <span class="north">N</span>
+      <span class="compass-needle"></span>
+      <span class="compass-dot"></span>
+    </div>
+
+    <aside class="panel timeline-panel" id="timelinePanel" aria-label="长征时间轴">
+      <div class="panel-head">
+        <div>
+          <span class="panel-kicker">JOURNEY LOG / 征途档案</span>
+          <h2>长征时间轴</h2>
+        </div>
+        <button class="panel-close" id="closeTimeline" aria-label="收起时间轴"><svg><use href="#i-close"/></svg></button>
+      </div>
+
+      <div class="mission-overview" id="missionOverview">
+        <div class="mission-ring" id="missionRing" style="--p:0">
+          <div><strong id="visitedCount">0</strong><span>/17 站</span></div>
+        </div>
+        <div class="mission-copy">
+          <span class="mission-label"><em id="missionChapter">CHAPTER 01 · 突围西进</em><b id="missionState">进行中</b></span>
+          <strong id="missionTitle">突破湘江封锁线</strong>
+          <span id="missionMeta">抵达 0/3 站 · 本章答题未完成</span>
+          <div class="mission-check-row">
+            <span class="cm-check" id="missionCheckStops"><i></i><b>0/3 站</b></span>
+            <span class="cm-check" id="missionCheckQuiz"><i></i><b>本章答题</b></span>
+          </div>
+          <div class="mission-mini-bar"><i id="missionMiniBar"></i></div>
+        </div>
+      </div>
+
+      <div class="timeline-scroll" id="timelineScroll">
+        <div class="timeline" id="timeline"></div>
+      </div>
+
+      <div class="panel-foot">
+        <div class="minimap-block">
+          <div class="minimap-head"><span>路线总览</span><em>OVERVIEW</em></div>
+          <div class="minimap-frame">
+            <canvas id="minimap" width="440" height="270" aria-label="长征路线缩略图"></canvas>
+            <span class="minimap-corner mc1"></span><span class="minimap-corner mc2"></span>
+            <span class="minimap-corner mc3"></span><span class="minimap-corner mc4"></span>
+          </div>
+        </div>
+        <div class="layer-row" aria-label="地图图层">
+          <button class="layer-btn is-on" data-layer="route" aria-pressed="true" title="行军路线"><svg><use href="#i-route"/></svg><span>路线</span></button>
+          <button class="layer-btn is-on" data-layer="labels" aria-pressed="true" title="地图标注"><svg><use href="#i-map"/></svg><span>标注</span></button>
+          <button class="layer-btn is-on" data-layer="markers" aria-pressed="true" title="事件坐标"><svg><use href="#i-pin"/></svg><span>坐标</span></button>
+          <button class="layer-btn" data-layer="convergence" aria-pressed="false" title="三军会师线"><svg><use href="#i-hands"/></svg><span>会师线</span></button>
+        </div>
+        <div class="heritage-row">
+          <button class="chronicle-btn" id="btnChronicle" type="button" aria-label="打开历史长卷">
+            <span class="chronicle-orb"><svg><use href="#i-scroll"/></svg></span>
+            <span class="chronicle-copy"><b>历史长卷</b></span>
+            <span class="chronicle-mini" id="chronicleMini">0/13</span>
+          </button>
+          <button class="chronicle-btn memory-btn" id="btnMemory" type="button" aria-label="打开红色记忆馆">
+            <span class="chronicle-orb memory-orb"><svg><use href="#i-book"/></svg></span>
+            <span class="chronicle-copy"><b>记忆馆</b></span>
+            <span class="chronicle-mini" id="memoryMini">0/23</span>
+          </button>
+        </div>
+        <button class="certificate-btn" id="btnCertificate" type="button" hidden>
+          <span class="certificate-btn-icon"><svg><use href="#i-trophy"/></svg></span>
+          <span><em>CAMPAIGN COMPLETE</em><b>领取长征胜利证书</b></span>
+          <svg class="certificate-arrow"><use href="#i-arrow-right"/></svg>
+        </button>
+        <button class="restart-journey" id="btnRestart" type="button">
+          <svg><use href="#i-reset"/></svg><span>重新开始征途</span><em>RESET</em>
+        </button>
+      </div>
+    </aside>
+
+    <aside class="panel dossier-panel" id="dossierPanel" aria-label="历史事件档案">
+      <div class="panel-head dossier-head">
+        <div>
+          <span class="panel-kicker">EVENT DOSSIER / 历史档案</span>
+          <h2>长征事件档案</h2>
+        </div>
+        <button class="panel-close" id="closeDossier" aria-label="收起事件档案"><svg><use href="#i-close"/></svg></button>
+      </div>
+      <div class="dossier-scroll" id="dossierBody"></div>
+    </aside>
+
+    <div class="map-controls" aria-label="地图控制">
+      <button class="map-ctrl" id="zoomIn" aria-label="放大" title="放大"><svg><use href="#i-plus"/></svg></button>
+      <button class="map-ctrl" id="zoomOut" aria-label="缩小" title="缩小"><svg><use href="#i-minus"/></svg></button>
+      <span class="ctrl-divider"></span>
+      <button class="map-ctrl" id="fitRoute" aria-label="回到长征路线" title="路线全览"><svg><use href="#i-reset"/></svg></button>
+      <button class="map-ctrl" id="fitMap" aria-label="查看整幅地图" title="地图全览"><svg><use href="#i-compass"/></svg></button>
+      <span class="ctrl-divider"></span>
+      <button class="map-ctrl" id="followUnit" aria-label="跟随红军行进" aria-pressed="false" title="跟随红军"><svg><use href="#i-target"/></svg></button>
+    </div>
+
+    <div class="map-legend">
+      <span><i class="lg-dot lg-visited"></i>已抵达</span>
+      <span><i class="lg-dot lg-todo"></i>待探索</span>
+      <span><i class="lg-line"></i>长征路线</span>
+    </div>
+
+    <div class="markers-layer" id="markersLayer" aria-label="长征历史坐标"></div>
+
+    <div class="march-unit" id="marchUnit" aria-hidden="true">
+      <span class="unit-halo"></span>
+      <span class="unit-flag"><i></i></span>
+      <span class="unit-dot"><svg><use href="#i-star"/></svg></span>
+      <span class="unit-label">红军</span>
+    </div>
+
+    <footer class="journey-dock">
+      <div class="play-cluster">
+        <button class="play-btn" id="btnPlay" aria-label="开始自动重走长征路">
+          <span class="play-icon"><svg class="icon-play"><use href="#i-play"/></svg><svg class="icon-pause"><use href="#i-pause"/></svg></span>
+        </button>
+        <div class="play-copy">
+          <span class="dock-kicker">GUIDED JOURNEY</span>
+          <strong id="playTitle">重走长征路</strong>
+          <span id="playSub">从于都出发 · 自动巡览 17 站</span>
+        </div>
+      </div>
+
+      <div class="journey-map">
+        <div class="chapter-tabs" id="chapterTabs" role="tablist" aria-label="长征阶段"></div>
+        <div class="route-progress">
+          <div class="route-track">
+            <i class="route-fill" id="routeFill"></i>
+            <div class="route-stops" id="routeStops"></div>
+          </div>
+          <div class="route-labels">
+            <span>1934.10 于都</span>
+            <span class="route-pct"><b id="routePct">0</b>% · 已走完</span>
+            <span>1936.10 会宁</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dock-score">
+        <div class="dock-metric">
+          <span>到访坐标</span>
+          <strong><b id="dockVisited">00</b><small>/17</small></strong>
+        </div>
+        <div class="dock-metric">
+          <span>答题最佳</span>
+          <strong><b id="dockQuiz">0</b><small>/8</small></strong>
+        </div>
+        <button class="dock-badge" id="btnBadges" title="查看已获得的征途徽章">
+          <svg><use href="#i-trophy"/></svg>
+          <span id="badgeCount">0</span>
+        </button>
+      </div>
+    </footer>
+
+    <div class="mobile-scrim" id="mobileScrim"></div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span class="toast-icon"><svg><use href="#i-star"/></svg></span>
+      <span class="toast-copy"><b id="toastTitle">提示</b><em id="toastText"></em></span>
+    </div>
+
+    <div class="narration-bar" id="narrationBar" aria-live="polite">
+      <span class="narration-orb"><svg><use href="#i-narrate"/></svg></span>
+      <span class="narration-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <div class="narration-copy">
+        <div class="narration-head"><span id="narrationKicker">语音导览 · VOICE GUIDE</span><em id="narrationStatus">正在朗读</em></div>
+        <p id="narrationText">正在准备讲解…</p>
+      </div>
+      <button class="narration-close" id="narrationClose" aria-label="停止语音讲解"><svg><use href="#i-close"/></svg></button>
+    </div>
+
+    <!-- 答题挑战 -->
+    <div class="modal" id="quizModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="quiz"></div>
+      <div class="quiz-shell" role="dialog" aria-modal="true" aria-labelledby="quizHeading">
+        <button class="modal-close" id="closeQuiz" aria-label="关闭答题"><svg><use href="#i-close"/></svg></button>
+        <aside class="quiz-aside">
+          <div class="quiz-aside-top">
+            <span class="quiz-seal"><svg><use href="#i-star"/></svg></span>
+            <span class="quiz-kicker">KNOWLEDGE CHECK</span>
+            <h2 id="quizHeading">长征<br/>知识挑战</h2>
+            <p>沿着刚刚走过的路线，回答 8 道历史题。答对越多，徽章越亮。</p>
+          </div>
+          <div class="quiz-aside-stats">
+            <div><span>题库</span><strong>8</strong></div>
+            <div><span>最佳</span><strong id="quizAsideBest">0</strong></div>
+          </div>
+          <div class="quiz-aside-deco" aria-hidden="true">
+            <span class="deco-route"></span>
+            <span class="deco-star s1"></span><span class="deco-star s2"></span><span class="deco-star s3"></span>
+          </div>
+        </aside>
+        <section class="quiz-main">
+          <div class="quiz-progress-head">
+            <div class="quiz-step"><span>QUESTION</span><strong id="quizStep">01 <small>/ 08</small></strong></div>
+            <div class="quiz-dots" id="quizDots"></div>
+          </div>
+          <div id="quizContent" class="quiz-content"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 玩法说明 -->
+    <div class="modal" id="helpModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="help"></div>
+      <div class="help-shell" role="dialog" aria-modal="true" aria-labelledby="helpHeading">
+        <button class="modal-close" id="closeHelp" aria-label="关闭说明"><svg><use href="#i-close"/></svg></button>
+        <div class="help-head">
+          <span class="panel-kicker">FIELD GUIDE / 使用手册</span>
+          <h2 id="helpHeading">如何重走长征路</h2>
+          <p>这是一张会呼吸的长征地图。移动镜头，寻找星标，听每一处山河讲述亲历的历史。</p>
+        </div>
+        <div class="help-grid">
+          <div class="help-card"><span class="help-num">01</span><svg><use href="#i-pin"/></svg><b>悬停星标</b><p>鼠标移到地图上的编号星标，即刻查看抵达时间、地点与事件摘要。</p></div>
+          <div class="help-card"><span class="help-num">02</span><svg><use href="#i-book"/></svg><b>点击阅读</b><p>点击星标打开右侧历史档案，查看完整故事、关键数字与长征精神。</p></div>
+          <div class="help-card"><span class="help-num">03</span><svg><use href="#i-compass"/></svg><b>拖拽探索</b><p>按住地图拖拽，滚轮或双指缩放。点击控制条可回到路线全览。</p></div>
+          <div class="help-card"><span class="help-num">04</span><svg><use href="#i-play"/></svg><b>自动巡览</b><p>点击“重走长征路”，镜头会沿着路线逐站移动，自动讲解 17 个节点。</p></div>
+          <div class="help-card"><span class="help-num">05</span><svg><use href="#i-star"/></svg><b>收集徽章</b><p>抵达坐标、完成答题都会解锁征途徽章。试试集齐全部 17 站。</p></div>
+          <div class="help-card"><span class="help-num">06</span><svg><use href="#i-trophy"/></svg><b>答题挑战</b><p>8 道长征知识题，答错也有历史讲解。答题最佳成绩会记录在底部控制台。</p></div>
+          <div class="help-card"><span class="help-num">07</span><svg><use href="#i-narrate"/></svg><b>语音讲解</b><p>开启顶栏语音开关后，抵达站点或自动巡览时会朗读事件摘要与历史意义，并同步显示字幕。</p></div>
+          <div class="help-card"><span class="help-num">08</span><svg><use href="#i-shield"/></svg><b>章节任务</b><p>每章需抵达全部站点，并答对本章指定题目。集齐五枚章节印章，可领取长征胜利证书。</p></div>
+          <div class="help-card"><span class="help-num">09</span><svg><use href="#i-target"/></svg><b>跟随红军</b><p>点击地图控制中的准星按钮，镜头会跟随当前站点。拖拽或滚轮即可退出跟随模式。</p></div>
+          <div class="help-card"><span class="help-num">10</span><svg><use href="#i-book"/></svg><b>人物与文物</b><p>在事件档案中点击关联人物或文物，进入红色记忆馆；人物、文物与事件、时代地图可互相跳转。</p></div>
+          <div class="help-card"><span class="help-num">11</span><svg><use href="#i-route"/></svg><b>四渡赤水推演</b><p>在赤水事件档案点击「四渡赤水 · 战术推演」，选择渡口与机动方向，挑战 81 种路线组合。</p></div>
+          <div class="help-card"><span class="help-num">12</span><svg><use href="#i-map"/></svg><b>真实地理对照</b><p>查看 17 个长征坐标的真实经纬度、路线区域、史料来源与艺术地图加工说明。</p></div>
+          <div class="help-card"><span class="help-num">13</span><svg><use href="#i-present"/></svg><b>教师 / 展馆讲解</b><p>打开全屏讲堂：章节预设、讲解提词、自动巡航、课堂提问与可打印讲义。</p></div>
+        </div>
+        <div class="help-shortcuts">
+          <span><kbd>空格</kbd> 开始 / 暂停巡览</span>
+          <span><kbd>←</kbd><kbd>→</kbd> 上一站 / 下一站</span>
+          <span><kbd>R</kbd> 路线全览</span>
+          <span><kbd>Q</kbd> 答题挑战</span>
+          <span><kbd>N</kbd> 语音讲解</span>
+          <span><kbd>F</kbd> 跟随红军</span>
+          <span><kbd>L</kbd> 历史长卷</span>
+          <span><kbd>M</kbd> 红色记忆馆</span>
+          <span><kbd>G</kbd> 真实地理</span>
+          <span><kbd>P</kbd> 讲解模式</span>
+          <span><kbd>?</kbd> 玩法说明</span>
+        </div>
+        <div class="help-note"><svg><use href="#i-info"/></svg><span>历史叙述参考公开党史资料整理。地图为艺术化手绘表达，地理比例与路线形态经过风格化处理。</span></div>
+        <button class="help-source" id="btnChronicleHelp"><svg><use href="#i-scroll"/></svg>打开历史长卷：前夜 · 远征 · 余音 · 薪火<span>→</span></button>
+        <button class="help-source" id="btnMemoryHelp"><svg><use href="#i-book"/></svg>打开红色记忆馆：人物 · 文物 · 时代<span>→</span></button>
+        <button class="help-source" id="btnTacticHelp"><svg><use href="#i-route"/></svg>打开四渡赤水：战役推演 · 四次渡河<span>→</span></button>
+        <button class="help-source" id="btnGeoHelp" data-open-geo><svg><use href="#i-map"/></svg>打开真实地理与史料图层：经纬 · 来源 · 对照<span>→</span></button>
+        <button class="help-source" id="btnLectureHelp" data-open-lecture><svg><use href="#i-present"/></svg>打开教师 / 展馆讲解模式：脚本 · 巡航 · 提问<span>→</span></button>
+        <button class="help-source" id="btnSources"><svg><use href="#i-book"/></svg>查看史料来源与地图说明<span>→</span></button>
+      </div>
+    </div>
+
+    <!-- 徽章 -->
+    <div class="modal" id="badgeModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="badge"></div>
+      <div class="badge-shell" role="dialog" aria-modal="true" aria-labelledby="badgeHeading">
+        <button class="modal-close" id="closeBadge" aria-label="关闭徽章"><svg><use href="#i-close"/></svg></button>
+        <div class="badge-head"><span class="panel-kicker">CAMPAIGN MEDALS / 征途徽章</span><h2 id="badgeHeading">我的长征徽章</h2><p>每走一段路，都会留下闪光的印记。</p></div>
+        <div class="badge-grid" id="badgeGrid"></div>
+      </div>
+    </div>
+
+    <!-- 重新开始 -->
+    <div class="modal" id="restartModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="restart"></div>
+      <div class="restart-shell" role="dialog" aria-modal="true" aria-labelledby="restartHeading">
+        <button class="modal-close" id="closeRestart" aria-label="关闭重新开始确认"><svg><use href="#i-close"/></svg></button>
+        <div class="restart-emblem"><svg><use href="#i-reset"/></svg></div>
+        <span class="restart-kicker">NEW JOURNEY / 新的征途</span>
+        <h2 id="restartHeading">重新开始长征？</h2>
+        <p>已抵达的 17 站坐标将全部清空，镜头回到起点于都。地图、历史档案与已读故事不会丢失。</p>
+        <label class="restart-check">
+          <input type="checkbox" id="resetQuizBest" />
+          <span class="restart-checkbox"><svg><use href="#i-check"/></svg></span>
+          <span class="restart-check-copy">同时清空答题最佳成绩<em>当前最佳 <b id="restartBest">0</b> / 8</em></span>
+        </label>
+        <div class="restart-actions">
+          <button class="restart-cancel" id="cancelRestart" type="button">再想想</button>
+          <button class="restart-confirm" id="confirmRestart" type="button">从于都重新出发<svg><use href="#i-arrow-right"/></svg></button>
+        </div>
+        <div class="restart-note"><svg><use href="#i-info"/></svg>重新开始后，本次行程进度无法恢复。</div>
+      </div>
+    </div>
+
+    <!-- 胜利证书 -->
+    <div class="modal" id="certificateModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="certificate"></div>
+      <div class="certificate-shell" role="dialog" aria-modal="true" aria-labelledby="certificateHeading">
+        <button class="modal-close" id="closeCertificate" aria-label="关闭证书"><svg><use href="#i-close"/></svg></button>
+        <div class="certificate-paper" id="certificatePaper">
+          <span class="cert-corner cc1"></span><span class="cert-corner cc2"></span>
+          <span class="cert-corner cc3"></span><span class="cert-corner cc4"></span>
+          <div class="cert-topline"><span>THE LONG MARCH · 1934—1936</span><i></i><span>VICTORY CERTIFICATE</span></div>
+          <div class="cert-star"><svg><use href="#i-star"/></svg></div>
+          <div class="cert-kicker">纪念中国工农红军长征胜利</div>
+          <h2 id="certificateHeading">长征胜利证书</h2>
+          <p class="cert-line">你沿着中央红军的足迹，从于都河畔走到会宁城头。<br/>二万五千里山河，见证信仰的力量。</p>
+          <div class="cert-recipient">授予 <b>长征精神传承者</b></div>
+          <div class="cert-stats">
+            <div><span>抵达坐标</span><strong>17<small>站</small></strong></div>
+            <div><span>完成章节</span><strong>5<small>章</small></strong></div>
+            <div><span>答题最佳</span><strong id="certQuizScore">0<small>/8</small></strong></div>
+            <div><span>行军里程</span><strong>25,000<small>里</small></strong></div>
+          </div>
+          <div class="cert-stamps" id="certStamps"></div>
+          <div class="cert-bottom">
+            <div class="cert-date"><span>颁发日期</span><b id="certDate">2026.10.20</b></div>
+            <div class="cert-seal"><span>长征</span><small>1934—1936</small><svg><use href="#i-star"/></svg></div>
+            <div class="cert-sign"><span>万里征途 · 互动长征地图</span><b>THE LONG MARCH ATLAS</b></div>
+          </div>
+        </div>
+        <div class="cert-actions">
+          <button class="cert-save" id="btnCertificateSave"><svg><use href="#i-download"/></svg>保存证书图片</button>
+          <button class="cert-share" id="btnCertificateShare"><svg><use href="#i-share"/></svg>分享</button>
+          <button class="cert-continue" id="btnCertificateContinue">继续探索<svg><use href="#i-arrow-right"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 史料来源 -->
+    <div class="modal" id="sourcesModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="sources"></div>
+      <div class="sources-shell" role="dialog" aria-modal="true" aria-labelledby="sourcesHeading">
+        <button class="modal-close" id="closeSources" aria-label="关闭史料说明"><svg><use href="#i-close"/></svg></button>
+        <div class="sources-head">
+          <span class="panel-kicker">SOURCES & METHOD / 史料与方法</span>
+          <h2 id="sourcesHeading">史料来源与地图说明</h2>
+          <p>本作品以公开党史、军史资料为叙述依据，以手绘互动地图为表达方式。以下为整体参考来源与创作边界说明。</p>
+        </div>
+        <div class="sources-list" id="sourcesList"></div>
+        <div class="sources-note">
+          <svg><use href="#i-info"/></svg>
+          <div class="sources-note-body">
+            <div><b>关于地图</b><p>地图中的山形、河流、森林与里程比例为艺术化表达，不对应真实地理坐标；事件发生时间、地点和主要史实以公开史料为准。兵力数字与伤亡统计在不同史料中可能存在口径差异。</p></div>
+            <div><b>关于人物与文物</b><p>「英雄人物志」「红色文物馆」以公开人物传记、纪念馆展陈与革命文物资料为整理依据。部分故事存在不同口述版本，条目采用概括性叙述；文物名称与关联事件为学习索引，不替代专业考证。</p></div>
+          </div>
+        </div>
+        <div class="sources-foot">资料整理截至 2026 年 10 月 · 仅用于学习与纪念</div>
+      </div>
+    </div>
+
+    <!-- 历史长卷 -->
+    <div class="modal chronicle-modal" id="chronicleModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="chronicle"></div>
+      <div class="chronicle-shell" role="dialog" aria-modal="true" aria-labelledby="chronicleHeading">
+        <button class="modal-close" id="closeChronicle" aria-label="关闭历史长卷"><svg><use href="#i-close"/></svg></button>
+        <aside class="chronicle-side">
+          <div class="chron-side-head">
+            <span class="chron-kicker">THE CHRONICLE / 时代长卷</span>
+            <h2 id="chronicleHeading">历史长卷</h2>
+            <p>从星火到薪火</p>
+          </div>
+          <nav class="chronicle-tabs" id="chronicleTabs" aria-label="历史长卷时代"></nav>
+          <div class="chronicle-progress">
+            <div class="chron-prog-head"><span>时代记忆</span><b><em id="chronicleReadCount">0</em> / 13 则</b></div>
+            <div class="chron-prog-bar"><i id="chronicleBar"></i></div>
+            <div class="chronicle-stamps" id="chronicleStamps"></div>
+            <div class="chron-progress-note" id="chronicleNote">读完每一则史料，点亮属于那个时代的印章。</div>
+          </div>
+          <button class="chron-memory-entry" id="btnChronicleMemory" type="button"><svg><use href="#i-book"/></svg><span>红色记忆馆</span><em>人物 · 文物</em></button>
+          <button class="chron-back" id="chronicleBack" type="button"><svg><use href="#i-map"/></svg>返回长征地图</button>
+        </aside>
+        <main class="chronicle-main" id="chronicleContent"></main>
+      </div>
+    </div>
+
+    <!-- 四渡赤水战役推演 -->
+    <div class="modal tactical-modal" id="tacticalModal" aria-hidden="true">
+      <div class="modal-backdrop" id="tacticBackdrop"></div>
+      <div class="tactic-shell" role="dialog" aria-modal="true" aria-labelledby="tacticHeading">
+        <button class="modal-close tactic-close" id="closeTactic" aria-label="关闭四渡赤水推演"><svg><use href="#i-close"/></svg></button>
+        <header class="tactic-head">
+          <div class="tactic-head-copy">
+            <span class="panel-kicker">CHISHUI MANOEUVRE / 1935</span>
+            <h2 id="tacticHeading">四渡赤水 · 战役推演</h2>
+            <p>三万人，四十万敌军。每一次渡河，都是一次与合围赛跑的抉择。</p>
+          </div>
+          <div class="tactic-head-record" id="tacticRecord"></div>
+        </header>
+        <div class="tactic-stats" id="tacticStats"></div>
+        <div class="tactic-play">
+          <div class="tactic-left">
+            <div class="tactic-phasebar" id="tacticPhases"></div>
+            <div class="tactic-board" id="tacticBoard"></div>
+            <div class="tactic-legend">
+              <span><i class="lg-red"></i>中央红军</span>
+              <span><i class="lg-enemy"></i>敌军重兵</span>
+              <span><i class="lg-cross"></i>渡口</span>
+              <span><i class="lg-history"></i>史实路线</span>
+            </div>
+          </div>
+          <aside class="tactic-side" id="tacticPanel"></aside>
+        </div>
+        <div class="tactic-intro" id="tacticIntro"></div>
+        <div class="tactic-debrief" id="tacticDebrief"></div>
+      </div>
+    </div>
+
+    <!-- 教师 / 展馆讲解模式 -->
+    <div class="lecture-modal" id="lectureModal" aria-hidden="true">
+      <div class="lecture-veil" aria-hidden="true"></div>
+      <div class="lecture-stage">
+        <header class="lecture-top">
+          <div class="lecture-brand">
+            <span class="lecture-kicker">LECTURE / EXHIBITION · 1934—1936</span>
+            <div class="lecture-brand-title">长征 · 讲解模式</div>
+          </div>
+          <div class="lecture-top-tools">
+            <label class="lecture-preset-wrap">
+              <span>讲解预设</span>
+              <select id="lecturePreset"></select>
+            </label>
+            <div class="lecture-mode-switch" aria-label="讲解模式">
+              <button type="button" data-lecture-mode="class" class="is-active">课堂</button>
+              <button type="button" data-lecture-mode="exhibit">展馆</button>
+            </div>
+            <button class="lecture-icon-btn" id="lectureFullscreen" aria-label="全屏展示" title="全屏展示"><svg><use href="#i-expand"/></svg></button>
+            <button class="lecture-icon-btn lecture-close" id="closeLecture" aria-label="退出讲解模式" title="退出讲解模式"><svg><use href="#i-close"/></svg></button>
+          </div>
+        </header>
+
+        <main class="lecture-main">
+          <section class="lecture-copy" id="lectureCopy">
+            <div class="lecture-kicker" id="lectureKicker"></div>
+            <h1 id="lectureTitle"></h1>
+            <p class="lecture-lead" id="lectureLead"></p>
+            <div class="lecture-meta" id="lectureMeta"></div>
+            <div class="lecture-script" id="lectureScript"></div>
+            <div class="lecture-source" id="lectureSource"></div>
+            <div class="lecture-quote" id="lectureQuote"></div>
+          </section>
+          <aside class="lecture-aside">
+            <div class="lecture-chapter" id="lectureChapter"></div>
+            <div class="lecture-stats" id="lectureStats"></div>
+            <div class="lecture-geo" id="lectureGeo"></div>
+          </aside>
+        </main>
+
+        <div class="lecture-chapters" id="lectureChapters"></div>
+        <div class="lecture-rail" id="lectureRail"></div>
+
+        <footer class="lecture-controls">
+          <div class="lecture-control-left">
+            <button class="lecture-round" type="button" data-lecture-prev aria-label="上一页"><svg><use href="#i-arrow-left"/></svg></button>
+            <button class="lecture-auto-btn" type="button" id="lectureAuto">
+              <svg id="lectureAutoIcon"><use href="#i-play"/></svg>
+              <span id="lectureAutoLabel">自动巡航</span>
+            </button>
+            <button class="lecture-round" type="button" data-lecture-next aria-label="下一页"><svg><use href="#i-arrow-right"/></svg></button>
+            <span class="lecture-counter" id="lectureCounter">01 / 19</span>
+            <label class="lecture-interval">每<select id="lectureInterval"><option value="20">20</option><option value="30" selected>30</option><option value="45">45</option></select>秒</label>
+          </div>
+          <div class="lecture-control-right">
+            <span class="lecture-timer" id="lectureTimer"></span>
+            <button class="lecture-tool" type="button" data-lecture-script-toggle>提词</button>
+            <button class="lecture-tool" type="button" data-lecture-question>课堂提问</button>
+            <div class="lecture-handout-wrap">
+              <button class="lecture-tool" type="button" data-lecture-handout-toggle>讲义</button>
+              <div class="lecture-handout-menu" id="lectureHandoutMenu">
+                <button type="button" data-lecture-handout="download">下载 HTML 讲义</button>
+                <button type="button" data-lecture-handout="print">打印 / 另存 PDF</button>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <div class="lecture-progress"><i id="lectureProgress"></i></div>
+      </div>
+
+      <div class="lecture-question" id="lectureQuestion" aria-hidden="true">
+        <div class="lecture-question-backdrop" data-lecture-question-close></div>
+        <div class="lecture-question-card" role="dialog" aria-modal="true" aria-labelledby="lectureQuestionText">
+          <button class="lecture-question-close" type="button" data-lecture-question-close aria-label="关闭问题"><svg><use href="#i-close"/></svg></button>
+          <span class="lecture-kicker">CLASSROOM QUESTION / 课堂提问</span>
+          <h3 id="lectureQuestionText"></h3>
+          <div class="lecture-question-options" id="lectureQuestionOptions"></div>
+          <div class="lecture-question-actions">
+            <button class="lecture-reveal" type="button" data-lecture-reveal>揭晓答案</button>
+            <button class="lecture-question-next" type="button" data-lecture-question-next>下一站</button>
+          </div>
+          <div class="lecture-question-explain" id="lectureQuestionExplain"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 真实地理与史料图层 -->
+    <div class="modal geo-modal" id="geoModal" aria-hidden="true">
+      <div class="modal-backdrop" id="geoBackdrop"></div>
+      <div class="geo-shell" role="dialog" aria-modal="true" aria-labelledby="geoHeading">
+        <button class="modal-close geo-close" id="closeGeo" aria-label="关闭真实地理与史料图层"><svg><use href="#i-close"/></svg></button>
+        <header class="geo-head">
+          <div class="geo-head-copy">
+            <span class="panel-kicker">GEOGRAPHY & SOURCES / 真实地理</span>
+            <h2 id="geoHeading">山河坐标 · 史料对照</h2>
+            <p>用经纬度重新阅读长征，用来源标记每一个坐标的可信边界。</p>
+          </div>
+          <div class="geo-head-meta">
+            <span>17 个长征坐标</span>
+            <b>10 组史料来源</b>
+            <em>示意坐标 · 非测绘</em>
+          </div>
+        </header>
+        <div class="geo-toolbar">
+          <div class="geo-layers" id="geoLayers" aria-label="地图图层"></div>
+          <div class="geo-mode-toggle" id="geoMode">
+            <button type="button" data-geo-mode="region">路线区域</button>
+            <button type="button" data-geo-mode="full">全国</button>
+          </div>
+        </div>
+        <div class="geo-main">
+          <section class="geo-map-panel">
+            <div class="geo-map" id="geoMap"></div>
+            <div class="geo-locator" id="geoLocator"></div>
+            <div class="geo-map-caption">
+              <span>真实国界轮廓 · Natural Earth</span>
+              <em>事件坐标为示意中心点 · 站点连线非真实道路</em>
+            </div>
+          </section>
+          <aside class="geo-side">
+            <div class="geo-tabs" id="geoTabs" role="tablist"></div>
+            <div class="geo-body" id="geoBody"></div>
+          </aside>
+        </div>
+        <div class="geo-timeline" id="geoTimeline" aria-label="长征坐标"></div>
+      </div>
+    </div>
+
+    <!-- 红色记忆馆 -->
+    <div class="modal memory-modal" id="memoryModal" aria-hidden="true">
+      <div class="modal-backdrop" id="memoryBackdrop"></div>
+      <div class="memory-shell" role="dialog" aria-modal="true" aria-labelledby="memoryHeading">
+        <button class="modal-close memory-close" id="closeMemory" aria-label="关闭红色记忆馆"><svg><use href="#i-close"/></svg></button>
+        <header class="memory-head">
+          <div class="memory-head-copy">
+            <span class="panel-kicker">MEMORY HALL / 红色记忆馆</span>
+            <h2 id="memoryHeading">人物与文物</h2>
+            <p>沿长征地图的坐标，认识走过来的人、留下来的物，以及他们共同抵达的时代。</p>
+          </div>
+          <div class="memory-head-side">
+            <div class="memory-collected"><span>已阅读记忆</span><b><em id="memoryViewedCount">0</em> / <i id="memoryTotalCount">23</i></b></div>
+            <div class="memory-collected-bar"><i id="memoryBar"></i></div>
+            <div class="memory-source-link"><button type="button" id="memorySourcesBtn"><svg><use href="#i-info"/></svg>史料说明</button></div>
+          </div>
+        </header>
+        <div class="memory-tabs" id="memoryTabs" role="tablist"></div>
+        <div class="memory-filters" id="memoryFilters" aria-label="按时代筛选"></div>
+        <div class="memory-body">
+          <div class="memory-browser">
+            <div class="memory-grid" id="memoryGrid"></div>
+            <div class="memory-empty" id="memoryEmpty" hidden>这个筛选下还没有条目。</div>
+          </div>
+          <aside class="memory-detail" id="memoryDetail"></aside>
+        </div>
+        <footer class="memory-foot">
+          <span><svg><use href="#i-info"/></svg>人物与文物条目为学习索引，史实参考公开党史、军史资料；部分故事存在不同口述版本。</span>
+          <button type="button" id="memorySourcesBtn2">查看史料来源<svg><use href="#i-arrow-right"/></svg></button>
+        </footer>
+      </div>
+    </div>
+
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+    <div class="boot" id="boot">
+      <div class="boot-stars" aria-hidden="true"></div>
+      <div class="boot-inner">
+        <div class="boot-emblem">
+          <span class="boot-ring"></span>
+          <svg><use href="#i-star"/></svg>
+        </div>
+        <span class="boot-kicker">THE LONG MARCH · INTERACTIVE ATLAS</span>
+        <h2>长征 <span>·</span> 万里征途</h2>
+        <p>正在铺开 25,000 里山河</p>
+        <div class="boot-progress"><i id="bootBar"></i></div>
+        <div class="boot-meta"><span id="bootLog">正在展开山川底图…</span><b id="bootPct">0%</b></div>
+      </div>
+      <div class="boot-footer"><span>1934 — 1936</span><span>中央红军长征路线互动地图</span></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/chronicle-map.js"></script>
+  <script src="js/tactical.js"></script>
+  <script src="js/geo-provinces.js"></script>
+  <script src="js/geoatlas.js"></script>
+  <script src="js/lecture.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

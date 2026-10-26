@@ -1,0 +1,6 @@
+.DS_Store
+.tmpchrome/
+.chrome-cdp/
+downloads/
+node_modules/
+*.log
