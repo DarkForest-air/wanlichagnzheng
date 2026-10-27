@@ -692,7 +692,7 @@
             <p class="notice">教师提示：${esc(L.teacherNote)}</p>
           </section>
           <footer>长征 · 万里征途 · 教师 / 展馆讲解模式 · 本讲义为学习与讲解辅助材料。</footer>
-        </div></body></html>`;
+        </div>${window.DemoWatermark ? window.DemoWatermark.markup : ""}</body></html>`;
     }
 
     downloadHandout() {

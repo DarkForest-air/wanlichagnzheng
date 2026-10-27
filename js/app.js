@@ -1805,6 +1805,7 @@
     ctx.fillText("1934—1936", 0, 18);
     ctx.restore();
 
+    if (window.DemoWatermark) window.DemoWatermark.drawCanvas(canvas);
     return canvas;
   }
 
